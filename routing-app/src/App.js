@@ -36,7 +36,7 @@ function App(){
         <Routes>
 
             <Route path='/' element={<HomePage/>}/>
-            <Route exact path='/topics' element={<TopicList/>}/>
+            <Route path='/topics' element={<TopicList/>}/>
             <Route path='/topics/:topicId' element={<TopicDetail/>}/>
 
         </Routes>
