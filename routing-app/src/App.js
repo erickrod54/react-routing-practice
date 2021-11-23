@@ -3,11 +3,11 @@ import { Route, Routes } from "react-router-dom";
 
 import './App.css';
 
-const HomePage = (props) => {
-  console.log(props)
+const HomePage = () => {
+  console.log()
   return(
     <div>
-      <h1>Home Page</h1>
+      <h3>Home Page</h3>
     </div>
   );
 }
@@ -15,7 +15,7 @@ const HomePage = (props) => {
 const TopicList = () => {
   return(
     <div>
-      <h1>Topic List Page</h1>
+      <h3>Topic List Page</h3>
     </div>
   );
 }
@@ -23,23 +23,23 @@ const TopicList = () => {
 const TopicDetail = () => {
   return(
     <div>
-      <h1>Topic Detail</h1>
+      <h3>Topic Detail</h3>
     </div>
   );
 }
 
 function App(){
   return(
-    
-      
-      
-        <Routes>
+    <div className='App'>
 
+        <Routes>
             <Route path='/' element={<HomePage/>}/>
             <Route path='/topics' element={<TopicList/>}/>
             <Route path='/topics/:topicId' element={<TopicDetail/>}/>
 
         </Routes>
+
+    </div>
     
     
   );
