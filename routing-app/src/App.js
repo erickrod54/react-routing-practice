@@ -1,7 +1,31 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 
 import './App.css';
+
+const Header = () => {
+  return(
+    <div className="nav">
+      <ul>
+        {/**Link is a feature of react router, mimics
+         * the a tag (solves the whole page refresh 
+         * feature from the a tag), instead href Link
+         * use to, and  instead of refresh, render in
+         * a SPA
+        */}
+        <li>
+        <Link to="/">Home</Link>
+        </li>
+        <li>
+        <Link to="/topics">Topics</Link>        
+        </li>
+        <li>
+        <Link to="/topics/:topicId">Topics Detail</Link>       
+        </li>
+      </ul>
+    </div>
+  )
+}
 
 const HomePage = () => {
   console.log()
@@ -31,8 +55,9 @@ const TopicDetail = () => {
 function App(){
   return(
     <div className='App'>
-
+  <Header />
         <Routes>
+          
             <Route path='/' element={<HomePage/>}/>
             <Route path='/topics' element={<TopicList/>}/>
             <Route path='/topics/:topicId' element={<TopicDetail/>}/>
