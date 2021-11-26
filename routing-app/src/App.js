@@ -1,10 +1,11 @@
 import React from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link, useParams } from "react-router-dom";
 
 import './App.css';
 
 const Header = () => {
   return(
+   
     <div className="nav">
       <ul>
         {/**Link is a feature of react router, mimics
@@ -24,6 +25,7 @@ const Header = () => {
         </li>
       </ul>
     </div>
+   
   )
 }
 
@@ -45,27 +47,36 @@ const TopicList = () => {
 }
 
 const TopicDetail = () => {
+
+  const { topicId } = useParams()
+
   return(
     <div>
-      <h3>Topic Detail</h3>
+      {/**you can test it with adding any 
+       * value to the url, and locating in topics
+       * topicDetail*/}
+      <h3>Topic Detail is = { topicId } </h3>
     </div>
   );
 }
 
+
+
 function App(){
   return(
+ 
     <div className='App'>
-  <Header />
-        <Routes>
+    <Header />
+          <Routes>
           
-            <Route path='/' element={<HomePage/>}/>
-            <Route path='/topics' element={<TopicList/>}/>
-            <Route path='/topics/:topicId' element={<TopicDetail/>}/>
+              <Route path='/' element={<HomePage/>}/>
+              <Route path='/topics' element={<TopicList/>}/>
+              <Route path='/topics/:topicId' element={<TopicDetail/>}/>
+           
+          </Routes>
 
-        </Routes>
+      </div>
 
-    </div>
-    
     
   );
 }
