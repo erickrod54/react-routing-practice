@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, Link, useParams } from "react-router-dom";
+import { Route, Routes, Link, useParams, useLocation } from "react-router-dom";
 
 import './App.css';
 
@@ -30,7 +30,9 @@ const Header = () => {
 }
 
 const HomePage = () => {
-  console.log()
+  /**test useLocation Hook for HomePage 
+   * location*/
+  /**console.log(useLocation()) */
   return(
     <div>
       <h3>Home Page</h3>
@@ -47,15 +49,29 @@ const TopicList = () => {
 }
 
 const TopicDetail = () => {
-
+  /**this way i access to url's params */
   const { topicId } = useParams()
+  /**useLocation hook get information like
+   * pathname, search, hash, state, key, the use
+   * is by component
+   */
 
+  /**To use search prop from useLccation i'll 
+   * test using a query into the url this way
+   * after a topicId example 4434 
+   * 
+   * '?first=Erick&last=Rodriguez'
+  */
+   const query = new URLSearchParams(useLocation().search)
+   console.log(useLocation())
   return(
     <div>
       {/**you can test it with adding any 
        * value to the url, and locating in topics
        * topicDetail*/}
       <h3>Topic Detail is = { topicId } </h3>
+      <h2>{query.get("first")}</h2>
+      <h2>{query.get("last")}</h2>
     </div>
   );
 }
