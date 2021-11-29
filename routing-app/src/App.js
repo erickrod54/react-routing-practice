@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes, Link, useParams, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Route, Routes, Link, useParams, useLocation, Navigate } from "react-router-dom";
 
 import './App.css';
 
@@ -22,6 +22,9 @@ const Header = () => {
         </li>
         <li>
         <Link to="/topics/:topicId">Topics Detail</Link>       
+        </li>
+        <li>
+        <Link to="/profile">Profile Page</Link>        
         </li>
       </ul>
     </div>
@@ -76,18 +79,47 @@ const TopicDetail = () => {
   );
 }
 
-
+const Profile = () => {
+  return(
+    <div>
+      <h3>Profile Page</h3>
+    </div>
+  );
+}
 
 function App(){
+  /**i will test two features first mimic a log in
+ * and then the useHistory hook to manage a log in
+ * feature, for that we will create an state using
+ * useState Hook
+ */
+
+  /**we create a state with the initial value
+   * of false*/
+  const [ login, setLogin ] = useState(true)
+
   return(
  
     <div className='App'>
     <Header />
+      <button 
+        onClick={()=>setLogin(!login)}>
+          {login ? 
+          "Login" : "Log Out"}
+      </button>
           <Routes>
           
               <Route path='/' element={<HomePage/>}/>
               <Route path='/topics' element={<TopicList/>}/>
               <Route path='/topics/:topicId' element={<TopicDetail/>}/>
+              <Route path='/profile'>
+                                          {/**navigate does
+                                           * what redirect was
+                                           * before and has more 
+                                           * features
+                                           */}
+                  <Route path='/profile' element={login ? <Profile /> : <Navigate to='/'/>}/>  
+              </Route>
            
           </Routes>
 
