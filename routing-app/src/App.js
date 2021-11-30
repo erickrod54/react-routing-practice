@@ -86,6 +86,13 @@ const Profile = () => {
     </div>
   );
 }
+const NotFound = () => {
+  return(
+    <div>
+      <h3>Not Found Page</h3>
+    </div>
+  )
+}
 
 function App(){
   /**i will test two features first mimic a log in
@@ -120,6 +127,14 @@ function App(){
                                            */}
                   <Route path='/profile' element={login ? <Profile /> : <Navigate to='/'/>}/>  
               </Route>
+              {/**for a notFound page or 404 error
+               * can be done like this, has to 
+               * be the last route in your route 
+               * echosystem '* means all the routes 
+               * that are not include above, renders
+               * <NotFound />'
+               */}
+              <Route path="*" element={<NotFound />}/>
            
           </Routes>
 
