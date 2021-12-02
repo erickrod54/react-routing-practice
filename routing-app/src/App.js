@@ -36,6 +36,7 @@ const HomePage = () => {
   /**test useLocation Hook for HomePage 
    * location*/
   /**console.log(useLocation()) */
+  
   return(
     <div>
       <h3>Home Page</h3>
@@ -80,6 +81,7 @@ const TopicDetail = () => {
 }
 
 const Profile = () => {
+  console.log(useLocation())
   return(
     <div>
       <h3>Profile Page</h3>
@@ -104,6 +106,7 @@ function App(){
   /**we create a state with the initial value
    * of false*/
   const [ login, setLogin ] = useState(true)
+  console.log('outside the routes', login)
 
   return(
  
@@ -119,14 +122,14 @@ function App(){
               <Route path='/' element={<HomePage/>}/>
               <Route path='/topics' element={<TopicList/>}/>
               <Route path='/topics/:topicId' element={<TopicDetail/>}/>
-              <Route path='/profile'>
+              <Route path='/profile' element={login ? <Profile /> : <Navigate to='/'/>} />
+              {console.log('inside the routes', login)}
                                           {/**navigate does
                                            * what redirect was
                                            * before and has more 
                                            * features
                                            */}
-                  <Route path='/profile' element={login ? <Profile /> : <Navigate to='/'/>}/>  
-              </Route>
+                  
               {/**for a notFound page or 404 error
                * can be done like this, has to 
                * be the last route in your route 
