@@ -105,7 +105,7 @@ function App(){
 
   /**we create a state with the initial value
    * of false*/
-  const [ login, setLogin ] = useState(true)
+  const [ login, setLogin ] = useState(false)
   console.log('outside the routes', login)
 
   return(
@@ -122,7 +122,8 @@ function App(){
               <Route path='/' element={<HomePage/>}/>
               <Route path='/topics' element={<TopicList/>}/>
               <Route path='/topics/:topicId' element={<TopicDetail/>}/>
-              <Route path='/profile' element={login ? <Profile /> : <Navigate to='/'/>} />
+              {/**fixed protected route to profile page */}
+              <Route path='/profile' element={login ? <Navigate to='/'/> : <Profile />} />
               {console.log('inside the routes', login)}
                                           {/**navigate does
                                            * what redirect was
