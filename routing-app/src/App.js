@@ -80,6 +80,14 @@ const TopicDetail = () => {
   );
 }
 
+const Dashboard = () => {
+  return(
+    <div>
+    <h1>Welcome to Dashboard</h1>
+  </div>
+  )
+}
+
 const Profile = () => {
   console.log(useLocation())
   return(
@@ -138,6 +146,7 @@ function App(){
                * that are not include above, renders
                * <NotFound />'
                */}
+               <Route path="/" element={<Dashboard />}/>
               <Route path="*" element={<NotFound />}/>
            
           </Routes>
