@@ -38,9 +38,21 @@ const HomePage = () => {
   /**console.log(useLocation()) */
   
   return(
+    /**fragments gives a component the capability
+     * to have more jsx elements like sub jsx or
+     * have a group jsx elements at same level
+     * like the example below
+     */
+    <>
     <div>
       <h3>Home Page</h3>
     </div>
+    <div>
+      <h3> For this second element 
+        the whole jsx must be in a fragment {'< >'}
+      </h3>
+    </div>
+    </>
   );
 }
 
@@ -148,7 +160,7 @@ function App(){
                */}
                <Route path="/" element={<Dashboard />}/>
               <Route path="*" element={<NotFound />}/>
-           
+              
           </Routes>
 
       </div>
